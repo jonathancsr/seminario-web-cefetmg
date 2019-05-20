@@ -26,6 +26,23 @@ window.onload = function () {
 	var coin = [];
 	var enemy = [];
 
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	window.navigator.vibrate(250);
+	
 	enemy.push(new Enemy(spriteSheetEnemy, cnv.width, counterEnemy))
 
 	enemy.forEach(function (item, indice, array) {
