@@ -40,10 +40,16 @@ window.onload = function () {
 		battery = batteryManager;
 		console.log(battery.level)
 		if (battery.charging) {
+			background.src = "img/desert.png"
+		}else{	
+			background.src = "img/BG.png"
 		}
-		else if (battery.level > 0.5) {
+		if (battery.level > 0.5) {
+			desert
 		}
 		else if (battery.level <= 0.5) {
+
+			background.src = "img/BG.png"
 		}
 	}
 
