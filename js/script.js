@@ -44,6 +44,7 @@ window.onload = function () {
 		}else{	
 			background.src = "img/BG.png"
 		}
+		/*
 		if (battery.level > 0.5) {
 			desert
 		}
@@ -51,6 +52,7 @@ window.onload = function () {
 
 			background.src = "img/BG.png"
 		}
+		*/
 	}
 
 	function batteryFailure() {
