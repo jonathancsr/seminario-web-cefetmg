@@ -1,8 +1,6 @@
 window.onload = function () {
 	//Constantes que armazenam o código de cada seta do teclado
-
 	var life = 3;
-
 	var SPACE = 32; LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
 	var floorHeight = 0;
 	var time = 0;
@@ -10,9 +8,7 @@ window.onload = function () {
 	var counterEnemy = 1;
 	var counterKill = 0;
 	var cnv = document.querySelector("canvas");
-
 	var ctx = cnv.getContext("2d");
-
 	var spriteSheet = new Image();
 	var spriteSheetCoin = new Image();
 	var spriteSheetEnemy = new Image();
@@ -26,23 +22,6 @@ window.onload = function () {
 	var coin = [];
 	var enemy = [];
 
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	window.navigator.vibrate(250);
-	
 	enemy.push(new Enemy(spriteSheetEnemy, cnv.width, counterEnemy))
 
 	enemy.forEach(function (item, indice, array) {
@@ -54,6 +33,27 @@ window.onload = function () {
 	coin.forEach(function (item, indice, array) {
 		console.log(item, indice);
 	});
+
+	var battery;
+
+	function batterySuccess(batteryManager) {
+		battery = batteryManager;
+		if (battery.charging) {
+			alert("carregando")
+		}
+		else if (battery.level > 0.5) {
+
+			alert.log("carregado > 0.5")
+		}
+		else if (battery.level < 0.5) {
+			alert.log("carregado < 0.5")
+		}
+	}
+
+	function batteryFailure() {
+		document.getElementById("promiseStatus").innerHTML = "failed";
+	}
+
 	var maxWidth = cnv.width - zezim.width;
 	var minWidth = 0;
 
@@ -66,8 +66,6 @@ window.onload = function () {
 	let lifeDiv = document.createElement('div');
 	lifeDiv.className = 'life';
 	body.appendChild(lifeDiv);
-
-
 
 	window.addEventListener("keydown", keydownHandler, false);
 	window.addEventListener("keyup", keyupHandler, false);
@@ -116,7 +114,6 @@ window.onload = function () {
 				zezim.mvLeft = false;
 				zezim.mvUp = false;
 				zezim.mvDown = false;
-
 				break;
 			case LEFT:
 				zezim.mvLastRight = false;
@@ -124,7 +121,6 @@ window.onload = function () {
 				zezim.mvLeft = true;
 				zezim.mvUp = false;
 				zezim.mvDown = false;
-
 				break;
 			case UP:
 				zezim.mvRight = false;
@@ -141,7 +137,6 @@ window.onload = function () {
 				zezim.mvDown = false;
 				zezim.atack = true;
 				break;
-
 		}
 
 	}
@@ -195,6 +190,7 @@ window.onload = function () {
 	function update() {
 		if (!zezim.endGame) {
 			gamePadHandler();
+			navigator.getBattery().then(batterySuccess, batteryFailure);
 			zezim.move(minWidth, maxWidth, time, floorHeight);
 			coin.forEach(function (item, indice, array) {
 				item.move();
@@ -205,7 +201,7 @@ window.onload = function () {
 						item.posX = Math.floor(((Math.random() * (item.cnvWidth - 800 - item.width)) + item.width)) + 400;
 						item.posY = Math.floor(((Math.random() * -800)) - 200);
 						if (counterCoin < 9) {
-							window.navigator.vibrate(250);
+							this.window.navigator.vibrate(500);
 							coin.push(new Coin(spriteSheetCoin, cnv.width, counterCoin));
 							//Colisao
 						}
@@ -238,7 +234,7 @@ window.onload = function () {
 
 						} else {
 							zezim.life--;
-							this.window.navigator.vibrate(2000);
+							this.window.navigator.vibrate(500);
 
 							if (zezim.life > 0)
 								counterKill -= 10;
