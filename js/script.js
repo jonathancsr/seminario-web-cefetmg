@@ -38,15 +38,12 @@ window.onload = function () {
 
 	function batterySuccess(batteryManager) {
 		battery = batteryManager;
+		console.log(battery.level)
 		if (battery.charging) {
-			alert("carregando")
 		}
 		else if (battery.level > 0.5) {
-
-			alert.log("carregado > 0.5")
 		}
-		else if (battery.level < 0.5) {
-			alert.log("carregado < 0.5")
+		else if (battery.level <= 0.5) {
 		}
 	}
 
