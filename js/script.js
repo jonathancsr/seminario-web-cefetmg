@@ -188,7 +188,7 @@ window.onload = function () {
 						item.posX = Math.floor(((Math.random() * (item.cnvWidth - 800 - item.width)) + item.width)) + 400;
 						item.posY = Math.floor(((Math.random() * -800)) - 200);
 						if (counterCoin < 9) {
-							navigator.vibrate([500]);
+							window.navigator.vibrate(250);
 							coin.push(new Coin(spriteSheetCoin, cnv.width, counterCoin));
 							//Colisao
 						}
@@ -221,8 +221,10 @@ window.onload = function () {
 
 						} else {
 							zezim.life--;
-							if(zezim.life > 0)
-							counterKill -= 10;
+							window.navigator.vibrate(250);
+
+							if (zezim.life > 0)
+								counterKill -= 10;
 							if ((counterKill * 5 + counterCoin * 10) < 0) {
 								counterKill = 0;
 								counterCoin = 0;
