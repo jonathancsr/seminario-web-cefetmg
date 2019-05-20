@@ -289,8 +289,8 @@ window.onload = function () {
 			//Captura da imagem
 			0, //Origem da captura no eixo X
 			0, //Origem da captura no eixo Y
-			2000, //Largura da imagem que será capturada
-			1143, //Altura da imagem que será capturada
+			1000, //Largura da imagem que será capturada
+			900, //Altura da imagem que será capturada
 			//Exibição da imagem
 			0, //Posição no eixo X onde a imagem será exibida 
 			0, //Posição no eixo Y onde a imagem será exibida 
