@@ -221,7 +221,7 @@ window.onload = function () {
 
 						} else {
 							zezim.life--;
-							window.navigator.vibrate(250);
+							this.window.navigator.vibrate(2000);
 
 							if (zezim.life > 0)
 								counterKill -= 10;
