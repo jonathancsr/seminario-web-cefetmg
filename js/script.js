@@ -21,7 +21,11 @@ window.onload = function () {
 	var enemy = new Enemy(spriteSheetEnemy);
 	var coin = [];
 	var enemy = [];
-
+	let body = document.getElementById('body');
+	let scoreText = document.createElement('h1');
+	scoreText.textContent = "Score : 0 ";
+	scoreText.className = 'score';
+	body.appendChild(scoreText);
 	enemy.push(new Enemy(spriteSheetEnemy, cnv.width, counterEnemy))
 
 	enemy.forEach(function (item, indice, array) {
@@ -41,8 +45,11 @@ window.onload = function () {
 		console.log(battery.level)
 		if (battery.charging) {
 			background.src = "img/desert.png"
+			scoreText.style.color = 'black';
+
 		}else{	
 			background.src = "img/BG.png"
+			scoreText.style.color = 'white';
 		}
 		/*
 		if (battery.level > 0.5) {
@@ -62,11 +69,7 @@ window.onload = function () {
 	var maxWidth = cnv.width - zezim.width;
 	var minWidth = 0;
 
-	let body = document.getElementById('body');
-	let scoreText = document.createElement('h1');
-	scoreText.textContent = "Score : 0 ";
-	scoreText.className = 'score';
-	body.appendChild(scoreText);
+
 
 	let lifeDiv = document.createElement('div');
 	lifeDiv.className = 'life';
