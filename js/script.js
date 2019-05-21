@@ -1,6 +1,5 @@
 window.onload = function () {
 	//Constantes que armazenam o código de cada seta do teclado
-	var life = 3;
 	var SPACE = 32; LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
 	var floorHeight = 0;
 	var time = 0;
@@ -258,9 +257,16 @@ window.onload = function () {
 							else if (zezim.life == 0)
 								lifeDiv.style.width = '0px';
 						}
-						if (counterEnemy <= 4 && zezim.life > 0) {
+						if (counterEnemy <= 40 && zezim.life > 0) {
 							navigator.vibrate([500]);
 							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+							
+							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+							
+							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+							
+							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+							
 							//Colisao
 							counterKill++;
 						}
@@ -275,7 +281,7 @@ window.onload = function () {
 						} else {
 							item.posX = Math.floor(((Math.random() * -1000)) - item.width - 500);
 						}
-					}
+					}              
 				}
 
 			});

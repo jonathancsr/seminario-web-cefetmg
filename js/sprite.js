@@ -1,17 +1,17 @@
 class Sprite {
 	constructor(img) {
 		//Atributos ****************
-		this.life = 3;
+		this.life = 0;
 		this.mvLastRight = true;
 		this.atack = this.mvLeft = this.mvUp = this.mvRight = this.mvDown = false;
 		//Origem para captura da imagem a ser exibida
 		this.srcX = this.srcY = 0;
 		//Posição no canvas onde a figura será exibida
 		this.posX = this.posY = 0;
-		this.imgWidth = 587;
-		this.imgHeight = 707;
-		this.width = 0.29 * 587;
-		this.height = 0.29 * 707;
+		this.imgWidth = 117.5;
+		this.imgHeight = 140;
+		this.width = 1.5 * 117.5;
+		this.height = 1.5 * 140;
 		this.speed = 10;
 		this.atackSpeed = 1;
 		this.gravity = 0.1;
@@ -77,16 +77,16 @@ class Sprite {
 
 			if (this.life <= 0) {
 				if (this.mvLastRight) {
-					this.imgWidth = 944;
-					this.width = 0.29 * 944;
-					this.height = 0.29 * 751;
+					this.imgWidth = 186.5;
+					this.width = 1.5 * 186.5;
+					this.height = 1.5 * 140;
 					this.srcY = this.imgHeight * 6;
 					this.frame = 50;
 				} else {
-					this.imgWidth = 944;
-					this.width = 0.29 * 944;
-					this.height = 0.29 * 751;
-					this.srcY = this.imgHeight * 6 + 751;
+					this.imgWidth = 186.5;
+					this.width = 1.5 * 186.5;
+					this.height = 1.5 * 140;
+					this.srcY = this.imgHeight * 6 + 140;
 					this.frame = 50;
 				}
 			}

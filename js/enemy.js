@@ -6,8 +6,8 @@ class Enemy {
 		this.srcX = this.srcY = 0;
 		//Posição no canvas onde a figura será exibida
 		this.mvLastRight = true;
-		this.imgWidth = 430;
-		this.imgHeight = 519;
+		this.imgWidth = 107.5;
+		this.imgHeight = 130;
 		this.width = 7 * 24;
 		this.height = 7 * 32;
 
@@ -25,11 +25,10 @@ class Enemy {
 		} else {
 			this.posX = Math.floor(((Math.random() * -1000)) - this.width - 500);
 		}
+
 		//Métodos *****************
 		//Desenha a figura
 		this.draw = function (ctx) {
-
-
 			ctx.drawImage(this.img, //Imagem de origem
 				//Captura da imagem
 				this.srcX, //Origem da captura no eixo X
