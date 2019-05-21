@@ -1,13 +1,15 @@
 class Sprite {
-	constructor(img) {
+	constructor(img, width, height) {
+		console.log(width + " - " + height)
 		//Atributos ****************
 		this.life = 3;
 		this.mvLastRight = true;
 		this.atack = this.mvLeft = this.mvUp = this.mvRight = this.mvDown = false;
 		//Origem para captura da imagem a ser exibida
-		this.srcX = this.srcY = 0;
+		this.srcX = 0;
+		this.srcY = 0;
 		//Posição no canvas onde a figura será exibida
-		this.posX = this.posY = 0;
+		this.posX = width; this.posY = height;
 		this.imgWidth = 117.5;
 		this.imgHeight = 140;
 		this.width = 1.5 * 117.5;
@@ -79,14 +81,14 @@ class Sprite {
 				if (this.mvLastRight) {
 					this.imgWidth = 186.5;
 					this.width = 1.5 * 186.5;
-					this.height = 1.5 * 140;
+					this.height = 1.5 * 133;
 					this.srcY = this.imgHeight * 6;
 					this.frame = 50;
 				} else {
-					this.imgWidth = 186.5;
-					this.width = 1.5 * 186.5;
-					this.height = 1.5 * 140;
-					this.srcY = this.imgHeight * 6 + 140;
+					this.imgWidth = 196.5;
+					this.width = 1.5 * 196.5;
+					this.height = 1.5 * 148;
+					this.srcY = this.imgHeight * 6 + 148;
 					this.frame = 50;
 				}
 			}

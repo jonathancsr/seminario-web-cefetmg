@@ -1,6 +1,6 @@
 window.onload = function () {
 	//Constantes que armazenam o código de cada seta do teclado
-	var SPACE = 32; LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40;
+	var SPACE = 32; LEFT = 37, UP = 38, RIGHT = 39, DOWN = 40, R = 82;
 	var floorHeight = 0;
 	var time = 0;
 	var counterCoin = 0;
@@ -16,7 +16,7 @@ window.onload = function () {
 	spriteSheetEnemy.src = "img/character2.png";
 	var background = new Image();
 	background.src = "img/BG.png"
-	var zezim = new Sprite(spriteSheet);
+	var zezim = new Sprite(spriteSheet, 0, 0);
 	var enemy = new Enemy(spriteSheetEnemy);
 	var coin = [];
 	var enemy = [];
@@ -26,26 +26,16 @@ window.onload = function () {
 	scoreText.className = 'score';
 	body.appendChild(scoreText);
 	enemy.push(new Enemy(spriteSheetEnemy, cnv.width, counterEnemy))
-
-	enemy.forEach(function (item, indice, array) {
-		console.log(item, indice);
-	});
-
 	coin.push(new Coin(spriteSheetCoin, cnv.width, counterCoin))
-
-	coin.forEach(function (item, indice, array) {
-		console.log(item, indice);
-	});
 
 	var battery;
 
 	function batterySuccess(batteryManager) {
 		battery = batteryManager;
-		console.log(battery.level)
 		if (battery.charging) {
 			background.src = "img/desert.png"
 			scoreText.style.color = 'black';
-		}else{	
+		} else {
 			background.src = "img/BG.png"
 			scoreText.style.color = 'white';
 		}
@@ -69,7 +59,6 @@ window.onload = function () {
 	function gamePadHandler() {
 		var gp = navigator.getGamepads()[0];
 		if (gp) {
-			console.log(gp);
 			if (gp.axes[0] > 0.001) {
 				zezim.mvLastRight = true;
 				zezim.mvRight = true;
@@ -97,7 +86,17 @@ window.onload = function () {
 				zezim.mvUp = false;
 				zezim.mvDown = false;
 				zezim.atack = true;
-			} else {
+			}else if(gp.buttons[8].pressed){
+				coin = [];
+				enemy = [];
+				lifeDiv.style.width = '166px';
+				coin.push(new Coin(spriteSheetCoin, cnv.width, counterCoin));
+				enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+				counterCoin = 0;
+				counterKill = 0;
+				zezim = new Sprite(spriteSheet, (cnv.width - zezim.width) / 2, (cnv.height - zezim.height));
+			} 
+			else {
 				zezim.atack = false;
 			}
 		}
@@ -134,6 +133,16 @@ window.onload = function () {
 				zezim.mvDown = false;
 				zezim.atack = true;
 				break;
+			case R:
+				coin = [];
+				enemy = [];
+				lifeDiv.style.width = '166px';
+				coin.push(new Coin(spriteSheetCoin, cnv.width, counterCoin));
+				enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
+				counterCoin = 0;
+				counterKill = 0;
+				zezim = new Sprite(spriteSheet, (cnv.width - zezim.width) / 2, (cnv.height - zezim.height));
+				break;
 		}
 
 	}
@@ -163,7 +172,7 @@ window.onload = function () {
 		init();
 		zezim.posX = (cnv.width - zezim.width) / 2; // personagem nasce no meio da tela
 		zezim.posY = cnv.height - zezim.height;
-
+		
 		coin.forEach(function (item, indice, array) {
 			item.posX = Math.floor(((Math.random() * (item.cnvWidth - 400 - item.width)) + item.width)) + 200;
 			item.posY = Math.floor(((Math.random() * -800)) - 200);
@@ -239,7 +248,6 @@ window.onload = function () {
 								counterKill = 0;
 								counterCoin = 0;
 							}
-							console.log(lifeDiv.style.width);
 							if (zezim.life == 2)
 								lifeDiv.style.width = '112px';
 							else if (zezim.life == 1)
@@ -250,13 +258,6 @@ window.onload = function () {
 						if (counterEnemy <= 4 && zezim.life > 0) {
 							navigator.vibrate([500]);
 							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
-							
-							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
-							
-							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
-							
-							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
-							
 							//Colisao
 							counterKill++;
 						}
@@ -271,7 +272,7 @@ window.onload = function () {
 						} else {
 							item.posX = Math.floor(((Math.random() * -1000)) - item.width - 500);
 						}
-					}              
+					}
 				}
 
 			});
