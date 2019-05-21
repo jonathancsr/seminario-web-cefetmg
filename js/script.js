@@ -86,7 +86,7 @@ window.onload = function () {
 				zezim.mvUp = false;
 				zezim.mvDown = false;
 				zezim.atack = true;
-			}else if(gp.buttons[8].pressed){
+			} else if (gp.buttons[8].pressed) {
 				coin = [];
 				enemy = [];
 				lifeDiv.style.width = '166px';
@@ -95,7 +95,7 @@ window.onload = function () {
 				counterCoin = 0;
 				counterKill = 0;
 				zezim = new Sprite(spriteSheet, (cnv.width - zezim.width) / 2, (cnv.height - zezim.height));
-			} 
+			}
 			else {
 				zezim.atack = false;
 			}
@@ -172,7 +172,7 @@ window.onload = function () {
 		init();
 		zezim.posX = (cnv.width - zezim.width) / 2; // personagem nasce no meio da tela
 		zezim.posY = cnv.height - zezim.height;
-		
+
 		coin.forEach(function (item, indice, array) {
 			item.posX = Math.floor(((Math.random() * (item.cnvWidth - 400 - item.width)) + item.width)) + 200;
 			item.posY = Math.floor(((Math.random() * -800)) - 200);
@@ -252,8 +252,10 @@ window.onload = function () {
 								lifeDiv.style.width = '112px';
 							else if (zezim.life == 1)
 								lifeDiv.style.width = '56px';
-							else if (zezim.life == 0)
+							else if (zezim.life == 0) {
 								lifeDiv.style.width = '0px';
+								this.window.navigator.vibrate(2000);
+							}
 						}
 						if (counterEnemy <= 4 && zezim.life > 0) {
 							navigator.vibrate([500]);
