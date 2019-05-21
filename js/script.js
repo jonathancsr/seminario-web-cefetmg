@@ -247,7 +247,7 @@ window.onload = function () {
 							else if (zezim.life == 0)
 								lifeDiv.style.width = '0px';
 						}
-						if (counterEnemy <= 40 && zezim.life > 0) {
+						if (counterEnemy <= 4 && zezim.life > 0) {
 							navigator.vibrate([500]);
 							enemy.push(new Enemy(spriteSheetEnemy, cnv.height, counterEnemy));
 							
