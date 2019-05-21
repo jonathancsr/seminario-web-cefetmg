@@ -1,7 +1,7 @@
 class Sprite {
 	constructor(img) {
 		//Atributos ****************
-		this.life = 0;
+		this.life = 3;
 		this.mvLastRight = true;
 		this.atack = this.mvLeft = this.mvUp = this.mvRight = this.mvDown = false;
 		//Origem para captura da imagem a ser exibida
