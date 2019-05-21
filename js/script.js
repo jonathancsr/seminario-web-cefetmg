@@ -45,20 +45,10 @@ window.onload = function () {
 		if (battery.charging) {
 			background.src = "img/desert.png"
 			scoreText.style.color = 'black';
-
 		}else{	
 			background.src = "img/BG.png"
 			scoreText.style.color = 'white';
 		}
-		/*
-		if (battery.level > 0.5) {
-			desert
-		}
-		else if (battery.level <= 0.5) {
-
-			background.src = "img/BG.png"
-		}
-		*/
 	}
 
 	function batteryFailure() {
